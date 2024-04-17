@@ -39,10 +39,14 @@
   </thead>
   <tbody>
 
+
+
   <?php
 include "Connection.php";
+
 $sql = "select * from crud"; 
 $result = mysqli_query($conn, $sql);
+       
 if (!$result) { 
     die("Invalid query: " . mysqli_error($conn));
 }
@@ -52,18 +56,14 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo "<td>" . $row['name'] . "</td>";
     echo "<td>" . $row['email'] . "</td>";
     echo "<td>";
-    echo '<button type="button" class="btn btn-success">Edit</button>';
-    echo '<button type="button" class="btn btn-danger">Delete</button>';
+    echo "<a class='btn btn-success' href='edit.php?id=" . $row['id'] . "'>Edit</a>";
+    echo "<a class='btn btn-danger' href='delete.php?id=" . $row['id'] . "'>Delete</a>";
     echo "</td>";
     echo "</tr>";
 }
 ?>
-    
+
+
   </tbody>
 </table>
 </html>
-
-
-
-
-
